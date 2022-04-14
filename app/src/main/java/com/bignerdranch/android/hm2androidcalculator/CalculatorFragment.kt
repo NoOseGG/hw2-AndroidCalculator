@@ -148,4 +148,6 @@ class CalculatorFragment : Fragment() {
         }
         return false
     }
+
+    fun test() {}
 }
