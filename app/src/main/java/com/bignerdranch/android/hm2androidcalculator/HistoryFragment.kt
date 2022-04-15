@@ -29,8 +29,12 @@ class HistoryFragment() : Fragment() {
         val history = arguments?.getStringArray(histories)
 
         with(binding) {
+            val adapter = HistoryAdapter()
             recyclerView.layoutManager = LinearLayoutManager(context)
-            recyclerView.adapter = history?.let { HistoryAdapter(it) }
+
+            recyclerView.adapter = adapter
+            adapter.submitList(history?.toList())
+
         }
     }
 

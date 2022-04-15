@@ -43,21 +43,21 @@ class CalculatorFragment : Fragment() {
     @SuppressLint("SetTextI18n")
     private fun allButtonClick() {
         with(binding) {
-            buttonZero.setOnClickListener { textView.text = "${textView.text}0" }
-            buttonOne.setOnClickListener { textView.text = "${textView.text}1" }
-            buttonTwo.setOnClickListener { textView.text = "${textView.text}2" }
-            buttonThree.setOnClickListener { textView.text = "${textView.text}3" }
-            buttonFour.setOnClickListener { textView.text = "${textView.text}4" }
-            buttonFive.setOnClickListener { textView.text = "${textView.text}5" }
-            buttonSix.setOnClickListener { textView.text = "${textView.text}6" }
-            buttonSeven.setOnClickListener { textView.text = "${textView.text}7" }
-            buttonEight.setOnClickListener { textView.text = "${textView.text}8" }
-            buttonNine.setOnClickListener { textView.text = "${textView.text}9" }
-            buttonDot.setOnClickListener { textView.text = "${textView.text}." }
+            buttonZero.setOnClickListener { textView.append("0") }
+            buttonOne.setOnClickListener { textView.append("1") }
+            buttonTwo.setOnClickListener { textView.append("2") }
+            buttonThree.setOnClickListener { textView.append("3") }
+            buttonFour.setOnClickListener { textView.append("4") }
+            buttonFive.setOnClickListener { textView.append("5") }
+            buttonSix.setOnClickListener { textView.append("6") }
+            buttonSeven.setOnClickListener { textView.append("7") }
+            buttonEight.setOnClickListener { textView.append("8") }
+            buttonNine.setOnClickListener { textView.append("9") }
+            buttonDot.setOnClickListener { textView.append(".") }
 
             buttonDelete.setOnClickListener { textView.text = "" }
-            buttonParenthesesLeft.setOnClickListener { textView.text = "${textView.text}(" }
-            buttonParenthesesRight.setOnClickListener { textView.text = "${textView.text})" }
+            buttonParenthesesLeft.setOnClickListener { textView.append("(") }
+            buttonParenthesesRight.setOnClickListener { textView.append(")") }
 
             buttonBack.setOnClickListener {
                 if (textView.text.length < 2) {
@@ -78,7 +78,7 @@ class CalculatorFragment : Fragment() {
                 if (checkOperator(textView.text.toString())) {
                     return@setOnClickListener
                 } else {
-                    textView.text = "${textView.text}+"
+                    textView.append("+")
                 }
             }
 
@@ -86,21 +86,21 @@ class CalculatorFragment : Fragment() {
                 if (checkOperator(textView.text.toString())) {
                     return@setOnClickListener
                 } else {
-                    textView.text = "${textView.text}-"
+                    textView.append("-")
                 }
             }
             buttonMulti.setOnClickListener {
                 if (checkOperator(textView.text.toString())) {
                     return@setOnClickListener
                 } else {
-                    textView.text = "${textView.text}*"
+                    textView.append("*")
                 }
             }
             buttonDiv.setOnClickListener {
                 if (checkOperator(textView.text.toString())) {
                     return@setOnClickListener
                 } else {
-                    textView.text = "${textView.text}/"
+                    textView.append("/")
                 }
             }
 
@@ -148,6 +148,4 @@ class CalculatorFragment : Fragment() {
         }
         return false
     }
-
-    fun test() {}
 }

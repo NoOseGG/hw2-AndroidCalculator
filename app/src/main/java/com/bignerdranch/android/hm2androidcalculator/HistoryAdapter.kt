@@ -2,11 +2,12 @@ package com.bignerdranch.android.hm2androidcalculator
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bignerdranch.android.hm2androidcalculator.databinding.HistoryFragmentBinding
 import com.bignerdranch.android.hm2androidcalculator.databinding.ItemHistoryBinding
 
-class HistoryAdapter(private val history: Array<String>) : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() {
+class HistoryAdapter : ListAdapter<String, HistoryAdapter.HistoryViewHolder>(DIFF_UTIL) {
 
     class HistoryViewHolder(
         private val binding: ItemHistoryBinding
@@ -25,10 +26,19 @@ class HistoryAdapter(private val history: Array<String>) : RecyclerView.Adapter<
     }
 
     override fun onBindViewHolder(holder: HistoryViewHolder, position: Int) {
-        holder.bind(history[position])
+        holder.bind(getItem(position))
     }
 
-    override fun getItemCount(): Int {
-        return history.size
+    companion object {
+        val DIFF_UTIL = object : DiffUtil.ItemCallback<String>() {
+            override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {
+                return oldItem == newItem
+            }
+
+            override fun areContentsTheSame(oldItem: String, newItem: String): Boolean {
+                return oldItem == newItem
+            }
+
+        }
     }
 }
